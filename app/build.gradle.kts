@@ -59,5 +59,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    ksp(libs.androidx.room.compiler)
+//    ksp(libs.androidx.room.compiler)
 }

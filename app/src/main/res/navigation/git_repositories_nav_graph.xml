@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/git_repositories_nav_graph"
+    app:startDestination="@id/gitRepositoriesFragment">
+
+    <fragment
+        android:id="@+id/gitRepositoriesFragment"
+        android:name="com.example.gitrepositoryfinderapplication.ui.fragments.SearchGitRepositoriesFragment"
+        android:label="GitRepositoriesFragment" />
+    <fragment
+        android:id="@+id/savedGitRepositoriesFragment"
+        android:name="com.example.gitrepositoryfinderapplication.ui.fragments.SavedGitRepositoriesFragment"
+        android:label="SavedGitRepositoriesFragment" />
+</navigation>
