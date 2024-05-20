@@ -14,22 +14,21 @@ abstract class GitRepositoryDatabase : RoomDatabase() {
 	abstract fun getGitRepositoryDao(): GitRepositoryDao
 
 	companion object {
-
 		@Volatile
 		private var INSTANCE: GitRepositoryDatabase? = null
 		private val LOCK = Any()
+		private const val DB_NAME = "git_repository_db.db"
 
 		operator fun invoke(context: Context) = INSTANCE ?: synchronized(LOCK) {
 			INSTANCE ?: createDatabase(context).also { INSTANCE = it }
 		}
 
-		private fun createDatabase(context: Context) {
+		private fun createDatabase(context: Context) =
 			Room.databaseBuilder(
 				context.applicationContext,
 				GitRepositoryDatabase::class.java,
-				"git_repository_db.db"
+				DB_NAME
 			).build()
-		}
 	}
 
 }

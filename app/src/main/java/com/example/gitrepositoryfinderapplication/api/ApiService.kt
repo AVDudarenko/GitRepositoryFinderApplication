@@ -10,4 +10,7 @@ interface ApiService {
 	@GET("users/{username}/repos")
 	suspend fun getUserRepositories(@Path("username") name: String): Response<GitRepositoriesResponse>
 
+	@GET("users/{username}/repos")
+	suspend fun downloadGitRepository(@Path("username") name: String)
+
 }

@@ -1,12 +1,14 @@
 package com.example.gitrepositoryfinderapplication
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(
-	tableName = "repositories	"
+	tableName = "repositories"
 )
 data class GitRepository(
+	@PrimaryKey(autoGenerate = true)
 	@SerializedName("id")
 	val id: Int,
 	@SerializedName("name")

@@ -3,6 +3,8 @@ package com.example.gitrepositoryfinderapplication.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -39,9 +41,13 @@ class GitRepositoriesAdapter :
 	override fun onBindViewHolder(holder: GitRepositoryViewHolder, position: Int) {
 		val gitRepository = differ.currentList[position]
 		holder.itemView.apply {
-//				val tvRepositoryName =  tv_name_of_repository
-//
-//			iv_download
+			val tvRepositoryName = findViewById<TextView>(R.id.tv_name_of_repository)
+			val ivDownload = findViewById<ImageView>(R.id.iv_download)
+
+			tvRepositoryName.text = gitRepository.name
+			ivDownload.setOnClickListener {
+
+			}
 		}
 	}
 
