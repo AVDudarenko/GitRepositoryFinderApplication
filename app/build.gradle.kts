@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.googleDevtoolsKsp)
+    id ("kotlin-kapt")
 
 }
 
@@ -60,4 +61,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 //    ksp(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
 }

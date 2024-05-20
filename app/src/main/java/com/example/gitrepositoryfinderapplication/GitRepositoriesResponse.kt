@@ -1,4 +1,5 @@
 package com.example.gitrepositoryfinderapplication
 
-class GitRepositoriesResponse {
-}
+data class GitRepositoriesResponse(
+	val gitRepositories: List<GitRepository>
+)
