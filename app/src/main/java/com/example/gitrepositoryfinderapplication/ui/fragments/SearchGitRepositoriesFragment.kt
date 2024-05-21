@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 	private lateinit var etSearchField: EditText
 	private lateinit var rvGitRepositories: RecyclerView
 	private lateinit var paginationProgressBar: ProgressBar
+	private lateinit var btnSearch: Button
 
 	private val TAG = "SearchGitRepositoriesFragment"
 
@@ -35,7 +37,8 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 		super.onViewCreated(view, savedInstanceState)
 		val repository = Repository(GitRepositoryDatabase(requireContext()))
 		val viewModelProviderFactory = GitRepositoryViewModelProviderFactory(repository)
-		viewModelSearch = ViewModelProvider(this, viewModelProviderFactory)[GitRepositoryViewModel::class.java]
+		viewModelSearch =
+			ViewModelProvider(this, viewModelProviderFactory)[GitRepositoryViewModel::class.java]
 		initViews(view)
 		setupRecyclerView()
 
@@ -61,6 +64,9 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 				}
 			}
 		})
+		btnSearch.setOnClickListener {
+			viewModelSearch.getUserGitRepositories(etSearchField.text.toString())
+		}
 	}
 
 	private fun setupRecyclerView() {
@@ -75,6 +81,7 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 		etSearchField = view.findViewById(R.id.et_search_field)
 		rvGitRepositories = view.findViewById(R.id.rvGitRepositories)
 		paginationProgressBar = view.findViewById(R.id.paginationProgressBar)
+		btnSearch = view.findViewById(R.id.btnSearch)
 	}
 
 	private fun hideProgressBar() {
