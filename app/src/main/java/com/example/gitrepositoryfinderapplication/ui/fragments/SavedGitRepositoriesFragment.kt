@@ -9,10 +9,10 @@ import com.example.gitrepositoryfinderapplication.ui.viewmodel.GitRepositoryView
 
 class SavedGitRepositoriesFragment:Fragment(R.layout.fragment_saved_git_repositories) {
 
-	lateinit var viewModel: GitRepositoryViewModel
+	private lateinit var viewModelSaved: GitRepositoryViewModel
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		viewModel = (activity as MainActivity).viewModel
+		viewModelSaved = (activity as MainActivity).viewModelMain
 	}
 }
