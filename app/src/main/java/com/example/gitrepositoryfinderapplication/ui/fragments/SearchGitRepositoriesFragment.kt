@@ -1,6 +1,5 @@
 package com.example.gitrepositoryfinderapplication.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +16,6 @@ import com.example.gitrepositoryfinderapplication.adapters.GitRepositoriesAdapte
 import com.example.gitrepositoryfinderapplication.db.GitRepositoryDatabase
 import com.example.gitrepositoryfinderapplication.repository.Repository
 import com.example.gitrepositoryfinderapplication.ui.GitRepositoryViewModelProviderFactory
-import com.example.gitrepositoryfinderapplication.ui.MainActivity
 import com.example.gitrepositoryfinderapplication.ui.Resource
 import com.example.gitrepositoryfinderapplication.ui.viewmodel.GitRepositoryViewModel
 
@@ -42,7 +40,7 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 		initViews(view)
 		setupRecyclerView()
 
-		viewModelSearch.userGitRepositories.observe(viewLifecycleOwner, Observer { response ->
+		viewModelSearch.userGitRepositories.observe(viewLifecycleOwner) { response ->
 			when (response) {
 				is Resource.Success -> {
 					hideProgressBar()
@@ -63,7 +61,7 @@ class SearchGitRepositoriesFragment : Fragment(R.layout.fragment_search_git_repo
 					showProgressBar()
 				}
 			}
-		})
+		}
 		btnSearch.setOnClickListener {
 			viewModelSearch.getUserGitRepositories(etSearchField.text.toString())
 		}
