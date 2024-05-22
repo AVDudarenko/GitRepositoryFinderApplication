@@ -1,12 +1,7 @@
 package com.example.gitrepositoryfinderapplication.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -18,14 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-	lateinit var viewModel: GitRepositoryViewModel
+	lateinit var viewModelMain: GitRepositoryViewModel
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
-
 		val repository = Repository(GitRepositoryDatabase(this))
 		val viewModelProviderFactory = GitRepositoryViewModelProviderFactory(repository)
-		viewModel = ViewModelProvider(
+		viewModelMain = ViewModelProvider(
 			this,
 			viewModelProviderFactory
 		)[GitRepositoryViewModel::class.java]
